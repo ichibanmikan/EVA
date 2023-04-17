@@ -20,7 +20,7 @@ public:
   virtual const std::vector<double> &expand(std::vector<double> &scratch,
                                             std::size_t slots) const = 0;
   virtual void expandTo(std::vector<double> &result,
-                        std::size_t slots) const = 0;
+                        std::size_t slots) const = 0;  //扩展常量值
   virtual bool isZero() const = 0;
   virtual void serialize(msg::ConstantValue &msg) const = 0;
 

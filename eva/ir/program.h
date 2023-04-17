@@ -130,11 +130,11 @@ private:
   std::uint32_t vecSize;
 
   // These are managed automatically by Term
-  std::unordered_set<Term *> sources;
-  std::unordered_set<Term *> sinks;
+  std::unordered_set<Term *> sources; //正向遍历的初始节点
+  std::unordered_set<Term *> sinks;  //反向遍历的初始节点
 
-  std::uint64_t nextTermIndex;
-  std::vector<TermMapBase *> termMaps;
+  std::uint64_t nextTermIndex;  
+  std::vector<TermMapBase *> termMaps;  //DAG图中的Term集合
 
   // These members must currently be last, because their destruction triggers
   // associated Terms to be destructed, which still use the sources and sinks
@@ -142,8 +142,8 @@ private:
   // TODO: move away from shared ownership for Terms and have Program own them
   // uniquely. It is an error to hold onto a Term longer than a Program, but
   // the shared_ptr is misleading on this regard.
-  std::unordered_map<std::string, Term::Ptr> outputs;
-  std::unordered_map<std::string, Term::Ptr> inputs;
+  std::unordered_map<std::string, Term::Ptr> outputs;  //输出结果集合
+  std::unordered_map<std::string, Term::Ptr> inputs;  //输入节点集合
 
   friend class Term;
   friend class TermMapBase;
